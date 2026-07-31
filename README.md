@@ -250,48 +250,12 @@ The `booker` database contains **14 tables**:
 
 ---
 
-## 👥 Team
-
-| Member | Contribution |
-|--------|-------------|
-| **Kotecha Priyansh** | Frontend design, UI/UX development |
-| **Trivedi Aayush** | Frontend design, table booking module |
-| **Gohil Bansirajsinh** | Backend development, database architecture |
-
-**Institution**: GMIT (Gandhinagar Institute of Technology)
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-## 🔮 Roadmap
-
-- [ ] Implement password hashing with `bcrypt`
-- [ ] Replace raw SQL with prepared statements
-- [ ] Migrate from cookies to PHP sessions
-- [ ] Add admin dashboard for booking management
-- [ ] Integrate payment gateway (Razorpay/Stripe)
-- [ ] Email notifications for booking confirmations
-- [ ] Add image gallery for rooms and banquet halls
-- [ ] Implement search and filter functionality
-- [ ] Add user profile and booking history
-
----
-
 <p align="center">
-  Made with ❤️ by the Booker Team at GMIT
+  Made with ❤️ by Banirajsinh Gohil
 </p>
