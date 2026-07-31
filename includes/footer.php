@@ -4,7 +4,7 @@
  * 
  * Shared footer section included on all pages.
  * 
- * @package Booker
+ * @package HotelManagement
  */
 ?>
 <footer>
@@ -24,11 +24,11 @@
         </div>
         <div class="footer-column">
             <h4>Contact Us</h4>
-            <p>Email: booker3@gmail.com</p>
+            <p>Email: hotel_management3@gmail.com</p>
             <p>Phone: +91 7046727288</p>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; <?php echo date('Y'); ?> Booker Hotel Management. All rights reserved.</p>
+        <p>&copy; <?php echo date('Y'); ?> Hotel Management. All rights reserved.</p>
     </div>
 </footer>

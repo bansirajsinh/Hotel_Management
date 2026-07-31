@@ -5,7 +5,7 @@
  * Main landing page after login. Displays the image carousel
  * and booking options (Tables, Rooms, Banquets, Transport).
  * 
- * @package Booker
+ * @package HotelManagement
  */
 
 // Auth guard

@@ -1,8 +1,8 @@
-# Booker — Hotel Management System
+# Hotel Management System
 
 ## Project Description
 
-**Booker** is a full-featured hotel management and booking web application built with PHP and MySQL. It provides an intuitive online platform for hotel guests to browse and book various hotel services including rooms, restaurant tables, banquet halls, and transport services.
+**Hotel Management** is a full-featured hotel management and booking web application built with PHP and MySQL. It provides an intuitive online platform for hotel guests to browse and book various hotel services including rooms, restaurant tables, banquet halls, and transport services.
 
 This project was developed as an academic project by three students from **GMIT (Gandhinagar Institute of Technology)**.
 
@@ -66,7 +66,7 @@ This project was developed as an academic project by three students from **GMIT 
 
 ## Database Design
 
-The application uses a MySQL database named `booker` with **14 tables**:
+The application uses a MySQL database named `hotel_management` with **14 tables**:
 
 ### Core Tables
 - `user_db` — Registered users (name, email, password, login tracking)
