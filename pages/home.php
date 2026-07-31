@@ -11,7 +11,7 @@
 // Auth guard
 require_once __DIR__ . '/../includes/auth_check.php';
 
-$pageTitle = 'Booker - Home';
+$pageTitle = 'Hotel Management - Home';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,7 @@ $pageTitle = 'Booker - Home';
         <div class="slide active">
             <img src="../assets/images/general/beach2.jpg" alt="Slide 1">
             <div class="slide-content">
-                <h2>Welcome to Booker Hotel</h2>
+                <h2>Welcome to Hotel Management</h2>
                 <p>Discover luxury accommodations at affordable prices.</p>
             </div>
         </div>

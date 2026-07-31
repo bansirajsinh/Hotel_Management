@@ -194,7 +194,7 @@ mysql -u root -p < database/schema.sql
 
 ### Database Overview
 
-The `booker` database contains **14 tables**:
+The `hotel_management` database contains **14 tables**:
 
 | Category | Tables |
 |----------|--------|

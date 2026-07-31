@@ -2,19 +2,49 @@
 /**
  * About Us Page
  * 
- * Displays information about the Booker team and
+ * Displays information about the team and
  * provides a contact form.
  * 
- * @package Booker
+ * @package HotelManagement
  */
 
+require_once __DIR__ . '/../includes/auth_check.php';
 require_once __DIR__ . '/../config/database.php';
 
+// Generate CSRF token if it doesn't exist
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+$successMessage = "";
+$errorMessage = "";
+
 // Check if the form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
+if (isset($_POST['send'])) {
+    if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'] ?? '')) {
+        $errorMessage = "Invalid CSRF token.";
+    } else {
+        $name = trim($_POST['name'] ?? '');
+        $email = trim($_POST['email'] ?? '');
+        $message = trim($_POST['message'] ?? '');
+        
+        if (!empty($name) && !empty($email) && !empty($message)) {
+            $conn = getDBConnection();
+            $stmt = mysqli_prepare($conn, "INSERT INTO `contact_us` (`name`, `email`, `message`) VALUES (?, ?, ?)");
+            if ($stmt) {
+                mysqli_stmt_bind_param($stmt, "sss", $name, $email, $message);
+                if (mysqli_stmt_execute($stmt)) {
+                    $successMessage = "We Will Contact You Soon!";
+                } else {
+                    $errorMessage = "Failed to send message. Please try again.";
+                }
+                mysqli_stmt_close($stmt);
+            }
+            mysqli_close($conn);
+        } else {
+            $errorMessage = "All fields are required.";
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -23,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booker - About Us</title>
+    <title>Hotel Management - About Us</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/auth.css">
@@ -34,31 +64,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="contact-page">
         <div class="contact-container">
             <h2>Contact Us</h2>
-            <?php if (isset($successMessage)) : ?>
-                <div class="success-message"><?php echo $successMessage; ?></div>
+            
+            <?php if (!empty($errorMessage)): ?>
+                <div style="color: red; margin-bottom: 15px;"><?php echo htmlspecialchars($errorMessage); ?></div>
+            <?php endif; ?>
+            
+            <?php if (!empty($successMessage)): ?>
+                <div class="success-message" style="color: green; margin-bottom: 15px; font-weight: bold;">
+                    <?php echo htmlspecialchars($successMessage); ?>
+                </div>
             <?php else : ?>
                 <form action="" method="post">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
                     <input type="text" name="name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email" required>
                     <textarea name="message" placeholder="Your Message" required></textarea>
                     <input type="submit" value="Send Message" name="send">
                 </form>
             <?php endif; ?>
-            <?php 
-                if (isset($_POST['send'])) {
-                    extract($_POST);
-                    $conn = getDBConnection();
-
-                    $query = "INSERT INTO `contact_us` (`id`, `name`, `email`, `message`) VALUES (NULL, '$name', '$email', '$message')";
-                    $result = mysqli_query($conn, $query);
-
-                    if ($result) {
-                        echo "We Will Contact You";
-                    }
-
-                    mysqli_close($conn);
-                }
-            ?>
         </div>
     </div>
 

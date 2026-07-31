@@ -1,169 +1,168 @@
 /* ============================================
-   Booker — Authentication Page Styles
-   Shared by login.php and signup.php
+   Hotel Management — Authentication Page Styles
+   Shared by login.php, signup.php, contact.php, about.php
    ============================================ */
 
-/* Login Page */
-.login-page {
-    background-image: url('../images/general/two.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.login-container {
-    max-width: 400px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
-}
-
-.login-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.login-container input[type="email"],
-.login-container input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #e6e6e6;
-}
-
-.login-container input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4caf50;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.login-container input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-.login-container .message {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.login-container .message a {
-    color: #4caf50;
-    text-decoration: none;
-}
-
-/* Signup Page */
+.login-page, 
 .signup-page {
-    background-image: url('../images/carousel/carousel-1.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('../images/general/two.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: calc(100vh - 80px); /* Subtract navbar height approx */
+    padding: var(--spacing-xl) var(--spacing-md);
 }
 
-.signup-container {
-    max-width: 400px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
+.signup-page {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('../images/carousel/carousel-1.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-.signup-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.signup-container input[type="text"],
-.signup-container input[type="password"],
-.signup-container input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #e6e6e6;
-}
-
-.signup-container input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4caf50;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.signup-container input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-.signup-container .message {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.signup-container .message a {
-    color: #4caf50;
-    text-decoration: none;
-}
-
-/* Contact Page (uses similar styling) */
 .contact-page {
-    background-size: cover;
-    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
+    min-height: 70vh;
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--bg-light);
 }
 
+.login-container,
+.signup-container,
 .contact-container {
-    max-width: 400px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
+    width: 100%;
+    max-width: 450px;
+    padding: var(--spacing-xl);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
 }
 
+.login-container h2,
+.signup-container h2,
 .contact-container h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-xl);
+    color: var(--text-primary);
+    font-size: 28px;
+    position: relative;
+    padding-bottom: var(--spacing-sm);
 }
 
-.contact-container input[type="email"],
-.contact-container input[type="text"],
+.login-container h2::after,
+.signup-container h2::after,
+.contact-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: var(--radius-sm);
+}
+
+.login-container form,
+.signup-container form,
+.contact-container form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.login-container input:not([type="submit"]),
+.signup-container input:not([type="submit"]),
+.contact-container input:not([type="submit"]),
 .contact-container textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #e6e6e6;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+    font-size: 15px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    font-family: inherit;
 }
 
+.contact-container textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.login-container input:not([type="submit"]):focus,
+.signup-container input:not([type="submit"]):focus,
+.contact-container input:not([type="submit"]):focus,
+.contact-container textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: var(--bg-white);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+}
+
+.login-container input[type="submit"],
+.signup-container input[type="submit"],
 .contact-container input[type="submit"] {
     width: 100%;
-    padding: 10px;
+    padding: 14px;
     border: none;
-    border-radius: 5px;
-    background-color: #4caf50;
-    color: white;
-    font-weight: bold;
+    border-radius: var(--radius-md);
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: var(--spacing-sm);
 }
 
+.login-container input[type="submit"]:hover,
+.signup-container input[type="submit"]:hover,
 .contact-container input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: var(--primary-hover);
+}
+
+.login-container input[type="submit"]:active,
+.signup-container input[type="submit"]:active,
+.contact-container input[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+.login-container .message,
+.signup-container .message {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.login-container .message a,
+.signup-container .message a {
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.login-container .message a:hover,
+.signup-container .message a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-container,
+.signup-container,
+.contact-container {
+    animation: fadeIn 0.4s ease-out forwards;
 }

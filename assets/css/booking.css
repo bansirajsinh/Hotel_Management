@@ -1,57 +1,143 @@
 /* ============================================
-   Booker — Booking Page Styles
+   Hotel Management — Booking Page Styles
    Shared by rooms, tables, banquets, transports
    ============================================ */
 
-/* Available item (green) */
-.tblN {
-    background: rgb(30, 193, 30);
-    padding: 10px;
-    color: white;
-    max-width: 10%;
-    text-align: center;
+/* Form inside booking listing pages */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    align-items: center;
+    margin: var(--spacing-lg) auto;
+    max-width: 800px;
+    padding: var(--spacing-md);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
 }
 
-/* Booked item (red) */
-.tblB {
-    background: red;
-    padding: 10px;
-    max-width: 10%;
-    text-align: center;
-    color: white;
+form input[type="date"],
+form select {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 15px;
+}
+
+form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: var(--primary-hover);
 }
 
 /* Booking grid layout */
 .booking-grid {
-    max-width: 60%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    margin: auto;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) auto;
+    max-width: 1200px;
+    padding: 0 var(--spacing-md);
+}
+
+/* Base item style */
+.tblN, .tblB {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    text-align: center;
+    color: var(--bg-white);
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100px;
+    box-shadow: var(--shadow-sm);
+}
+
+.tblN small, .tblB small {
+    display: block;
+    margin-top: var(--spacing-xs);
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* Available item (green) */
+.tblN {
+    background-color: var(--success-color);
+    cursor: pointer;
+}
+
+.tblN:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    background-color: var(--success-hover);
+}
+
+/* Booked item (red) */
+.tblB {
+    background-color: var(--danger-color);
+    opacity: 0.8;
+    cursor: not-allowed;
 }
 
 /* Booking detail table */
+.book {
+    max-width: 600px;
+    margin: var(--spacing-xl) auto;
+    padding: var(--spacing-xl);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.book h3 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--success-color);
+}
+
 .book table {
-    padding: 10px;
-    max-width: 50%;
-    margin: auto;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.book table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.book table tr:last-child td {
+    border-bottom: none;
+    padding-top: var(--spacing-lg);
+}
+
+.book table tr td:first-child {
+    font-weight: 600;
+    color: var(--text-secondary);
+    width: 40%;
+}
+
+.book form {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
 }
 
 /* Remove link underlines in booking pages */
 .booking-grid a {
     text-decoration: none;
-}
-
-/* Responsive grid for booking pages */
-@media screen and (max-width: 1009px) {
-    .booking-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .booking-grid {
-        grid-template-columns: 1fr;
-    }
 }
