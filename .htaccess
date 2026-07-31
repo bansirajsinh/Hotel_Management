@@ -1,0 +1,34 @@
+# ============================================
+# Booker Hotel Management — Apache Config
+# ============================================
+
+# Deny access to sensitive directories
+<FilesMatch "\.(php|sql)$">
+    # Allow PHP files in public directories
+</FilesMatch>
+
+# Deny direct access to config directory
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Block access to config files
+    RewriteRule ^config/ - [F,L]
+    
+    # Block access to database SQL files
+    RewriteRule ^database/ - [F,L]
+    
+    # Block access to includes directory
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Protect .env and hidden files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

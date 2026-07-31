@@ -1,0 +1,30 @@
+# ============================================
+# Booker Hotel Management — Git Ignore
+# ============================================
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# OS-generated files
+*.log
+
+# Environment / Config (if sensitive data is added later)
+# config/database.php   # Uncomment if credentials become sensitive
+
+# Node modules (if any)
+node_modules/
+
+# Composer vendor (if added later)
+vendor/
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
